@@ -85,10 +85,10 @@ std::cout<<"avrage time: "<<avrage_time<<"\n";
     std::ofstream file("quickSort_m3.txt", std::ios::app);
     file<<"quickSort_m3\nN\t\t\tT[ms]\t\t\tStdev[ms]\t\t\tSamples\n"<<size<<"\t\t\t"<<avrage_time<<"\t\t\t"
     <<avrage_avikelse<<"\t\t\t"<<samples<<"\n";
-/*
+
     for(auto e:insertion){
         std::cout<<e<<", ";
-    }*/
+    }
     if(std::is_sorted(insertion.begin(),insertion.end())){
         std::cout<<"\nsorted\n";
     } else{
@@ -101,9 +101,6 @@ std::cout<<"avrage time: "<<avrage_time<<"\n";
     if(decide==1) {
         remove("quickSort_m3.txt");
     }
-
-
-
 
     return 0;
 }

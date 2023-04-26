@@ -3,7 +3,7 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 # Load the data from a text file
-data = np.loadtxt('cmake-build-debug/random.txt', delimiter='\t')
+data = np.loadtxt('cmake-build-debug/quickSort_m3.txt', skiprows=2, usecols=(1, 2))
 
 # Split the data into independent and dependent variables
 X = data[:, :-1]
