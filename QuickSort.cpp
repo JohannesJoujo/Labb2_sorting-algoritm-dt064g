@@ -4,15 +4,15 @@
 
 #include "QuickSort.h"
 
-void quickSort(std::vector<int> &vec, std::vector<int>::iterator low, std::vector<int>::iterator high) {
+void quickSort(std::vector<int>::iterator low, std::vector<int>::iterator high) {
     if (low < high) {
-        auto pi = partition(vec, low, high);
-        quickSort(vec, low, pi);
-        quickSort(vec, pi + 1, high);
+        auto pi = partition(low, high);
+        quickSort(low, pi);
+        quickSort(pi + 1, high);
     }
 }
 
-std::vector<int>::iterator partition(std::vector<int> &vec, std::vector<int>::iterator low, std::vector<int>::iterator high) {
+std::vector<int>::iterator partition( std::vector<int>::iterator low, std::vector<int>::iterator high) {
     auto pivot = high - 1;
     auto i = low - 1;
     for (auto j = low; j < pivot; j++) {

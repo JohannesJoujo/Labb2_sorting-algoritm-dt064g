@@ -5,7 +5,11 @@
 #include "generate_numbers.h"
 
 void generate_random(std::vector<int>&vec){
-    std::generate(vec.begin(),vec.end(),std::rand);
+    //std::generate(vec.begin(),vec.end(),std::rand);
+    for(auto &e:vec){
+        int rand_num=rand()%500+1;
+        e=rand_num;
+    }
 }
 void generate_decreasing(std::vector<int>&vec){
     int size=vec.size()+1;

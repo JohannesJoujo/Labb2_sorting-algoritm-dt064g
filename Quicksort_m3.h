@@ -9,8 +9,8 @@
 #include <vector>
 
 
-std::vector<int>::iterator partition_m3(std::vector<int> &vec, std::vector<int>::iterator low, std::vector<int>::iterator high);
-void quickSort_m3(std::vector<int> &vec, std::vector<int>::iterator low, std::vector<int>::iterator high);
+std::vector<int>::iterator partition_m3(std::vector<int>::iterator low, std::vector<int>::iterator high);
+void quickSort_m3(std::vector<int>::iterator low, std::vector<int>::iterator high);
 std::vector<int>::iterator med_of_3(std::vector<int>::iterator low, std::vector<int>::iterator high);
 
 

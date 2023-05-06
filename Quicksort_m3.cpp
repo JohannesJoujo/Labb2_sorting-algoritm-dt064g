@@ -4,15 +4,15 @@
 
 #include "Quicksort_m3.h"
 
-void quickSort_m3(std::vector<int> &vec, std::vector<int>::iterator low, std::vector<int>::iterator high) {
+void quickSort_m3(std::vector<int>::iterator low, std::vector<int>::iterator high) {
     if (low < high) {
-        auto pi = partition_m3(vec, low, high);
-        quickSort_m3(vec, low, pi);
-        quickSort_m3(vec, pi + 1, high);
+        auto pi = partition_m3(low, high);
+        quickSort_m3( low, pi);
+        quickSort_m3( pi + 1, high);
     }
 }
 
-std::vector<int>::iterator partition_m3(std::vector<int> &vec, std::vector<int>::iterator low, std::vector<int>::iterator high) {
+std::vector<int>::iterator partition_m3(std::vector<int>::iterator low, std::vector<int>::iterator high) {
     auto pivot = med_of_3(low,high);
     auto i = low - 1;
     for (auto j = low; j < high; j++) {

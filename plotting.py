@@ -1,29 +1,61 @@
-import numpy as np
-from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
-# Load the data from a text file
-data = np.loadtxt('cmake-build-debug/quickSort_m3.txt', skiprows=2, usecols=(1, 2))
+# Open the text file and read the lines
+with open('/Users/JohannesJoujo/CLionProjects/Labb2_sorting/cmake-build-release/Sort.txt', 'r') as file:
+    lines = file.readlines()
 
-# Split the data into independent and dependent variables
-X = data[:, :-1]
-y = data[:, -1]
+# Initialize empty lists for the data
+N_insertion_sort = []
+T_insertion_sort = []
+Stdev_insertion_sort = []
 
-# Create a linear regression model
-model = LinearRegression()
+N_selection_sort = []
+T_selection_sort = []
+Stdev_selection_sort = []
 
-# Train the model using the data
-model.fit(X, y)
+N_quickSort = []
+T_quickSort = []
+Stdev_quickSort = []
 
-# Print the coefficients of the linear regression line
-print('Coefficients:', model.coef_)
+N_quickSort_m3 = []
+T_quickSort_m3 = []
+Stdev_quickSort_m3 = []
 
-# Predict the dependent variable using the model
-y_pred = model.predict(X)
+# Loop through the lines and extract the data
+for line in lines:
+    if line.startswith('insertion_sort'):
+        continue
+    if line.startswith('N'):
+        continue
+    if line.startswith('\n'):
+        continue
+    if line.startswith('selection_sort'):
+        continue
+    if line.startswith('N'):
+        continue
+    if line.startswith('\n'):
+        continue
+    if line.startswith('quickSort'):
+        continue
+    if line.startswith('N'):
+        continue
+    if line.startswith('\n'):
+        continue
+    if line.startswith('quickSort_m3'):
+        continue
+    if line.startswith('N'):
+        continue
+    if line.startswith('\n'):
+        continue
 
-# Plot the results
-plt.scatter(X[:, 0], y)
-plt.plot(X[:, 0], y_pred, color='red')
-plt.xlabel('Independent variable')
-plt.ylabel('Dependent variable')
+    parts = line.split('\t')
+    N_insertion_sort.append(int(parts[0]))
+    T_insertion_sort.append(float(parts[1]))
+    Stdev_insertion_sort.append(float(parts[2]))
+
+# Plot the data
+plt.errorbar(N_insertion_sort, T_insertion_sort, yerr=Stdev_insertion_sort, fmt='o', ecolor='red')
+plt.xlabel('N')
+plt.ylabel('Time [ms]')
+plt.title('Insertion_sort')
 plt.show()
