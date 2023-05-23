@@ -14,16 +14,12 @@ int main() {
     int samples=10;
     std::vector<int> insertion(size);
     std::vector<double> time_vec(size);
-    generate_constant(insertion);
-/*
-    for(auto e:insertion){
-        std::cout<<e<<", ";
-    }*/
+    generate_random(insertion);
 
     int choose_option=10;
-    while (choose_option >= 5){
+    while (choose_option >= 6){
         std::cout<<"Your options are:\n";
-        std::cout<<"[1] for Insertion sort\n[2] for selection sort\n[3] for Quicksort\n[4] for Quicksort_m3\n ";
+        std::cout<<"[1] for Insertion sort\n[2] for selection sort\n[3] for Quicksort\n[4] for Quicksort_m3\n[5] for std::sort\n ";
         std::cin>>choose_option;
     }
     std::ofstream file("Sort.txt", std::ios::app);
@@ -46,7 +42,7 @@ int main() {
                 }
                 avrage_avikelse= standardavvikelse(time_vec);
                 avrage_time= avg(time_vec);
-                file<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
+                file<<"a"<<"\t"<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
                 time_vec.clear();
                 //time_vec.resize(size);
                 tries=tries + size;
@@ -54,26 +50,6 @@ int main() {
 
             break;
         case 2:
-            /*
-            tries=size;
-            for(int c=0;c<10;c++) {
-
-                for (int j = 0; j < samples; j++) {
-                    for (int i = 0; i < tries; i++) {
-                        auto start = std::chrono::steady_clock::now();
-                        selection_sort(insertion);
-                        auto end = std::chrono::steady_clock::now();
-                        time_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
-                    }
-                }
-                avrage_avikelse = standardavvikelse(time_vec);
-                avrage_time = avg(time_vec);
-
-                file << "selection_sort\nN\t\t\tT[ms]\t\t\tStdev[ms]\t\t\tSamples\n" << tries << "\t\t\t" << avrage_time
-                     << "\t\t\t"
-                     << avrage_avikelse << "\t\t\t" << samples << "\n";
-                tries = tries +size;
-            }*/
             tries=size;
             file<<"selection_sort\nN\tT[ms]\tStdev[ms]\tSamples\n";
             for (int j = 0; j < samples; j++) {
@@ -88,39 +64,20 @@ int main() {
                 }
                 avrage_avikelse= standardavvikelse(time_vec);
                 avrage_time= avg(time_vec);
-                file<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
+                file<<"b"<<"\t"<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
                 time_vec.clear();
                 //time_vec.resize(size);
                 tries=tries + size;
             }
             break;
         case 3:
-            /*
-            tries=size;
-            for(int c=0;c<10;c++) {
-                for (int j = 0; j < samples; j++) {
-                    for (int i = 0; i < tries; i++) {
-                        auto start = std::chrono::steady_clock::now();
-                        quickSort(insertion, insertion.begin(), insertion.end());
-                        auto end = std::chrono::steady_clock::now();
-                        time_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
-                    }
-                }
-                avrage_avikelse = standardavvikelse(time_vec);
-                avrage_time = avg(time_vec);
-
-                file << "quickSort\nN\t\t\tT[ms]\t\t\tStdev[ms]\t\t\tSamples\n" << tries << "\t\t\t" << avrage_time
-                     << "\t\t\t"
-                     << avrage_avikelse << "\t\t\t" << samples << "\n";
-                tries = tries + size;
-            }*/
             tries=size;
             file<<"quickSort\nN\tT[ms]\tStdev[ms]\tSamples\n";
             for (int j = 0; j < samples; j++) {
                 for (int i = 0; i < 10; i++) {
                     new_try(tries,insertion);
                     auto start = std::chrono::steady_clock::now();
-                    quickSort(insertion.begin(), insertion.end());
+                    quicksort(insertion,0, insertion.size()-1);
                     auto end = std::chrono::steady_clock::now();
                     time_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
                     assert(std::is_sorted(insertion.begin(),insertion.end()));
@@ -128,40 +85,19 @@ int main() {
                 }
                 avrage_avikelse= standardavvikelse(time_vec);
                 avrage_time= avg(time_vec);
-                file<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
+                file<<"c"<<"\t"<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
                 time_vec.clear();
-                //time_vec.resize(size);
                 tries=tries + size;
             }
             break;
         case 4:
-            /*
-            tries=size;
-            for(int c=0;c<10;c++) {
-                for (int j = 0; j < samples; j++) {
-                    for (int i = 0; i < tries; i++) {
-                        auto start = std::chrono::steady_clock::now();
-                        quickSort_m3(insertion.begin(), insertion.end());
-                        auto end = std::chrono::steady_clock::now();
-                        time_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
-                    }
-                }
-                avrage_avikelse = standardavvikelse(time_vec);
-                avrage_time = avg(time_vec);
-
-                file << "quickSort_m3\nN\t\t\tT[ms]\t\t\tStdev[ms]\t\t\tSamples\n" << tries << "\t\t\t" << avrage_time
-                     << "\t\t\t"
-                     << avrage_avikelse << "\t\t\t" << samples << "\n";
-                tries = tries +size;
-            }
-            */
             tries=size;
             file<<"quickSort_m3\nN\tT[ms]\tStdev[ms]\tSamples\n";
             for (int j = 0; j < samples; j++) {
                 for (int i = 0; i < 10; i++) {
                     new_try(tries,insertion);
                     auto start = std::chrono::steady_clock::now();
-                    quickSort_m3(insertion.begin(), insertion.end());
+                    quickSort_m3(insertion,0, insertion.size()-1);
                     auto end = std::chrono::steady_clock::now();
                     time_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
                     assert(std::is_sorted(insertion.begin(),insertion.end()));
@@ -169,7 +105,28 @@ int main() {
                 }
                 avrage_avikelse= standardavvikelse(time_vec);
                 avrage_time= avg(time_vec);
-                file<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
+                file<<"d"<<"\t"<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
+                time_vec.clear();
+                //time_vec.resize(size);
+                tries=tries + size;
+            }
+            break;
+        case 5:
+            tries=size;
+            file<<"std::sort\nN\tT[ms]\tStdev[ms]\tSamples\n";
+            for (int j = 0; j < samples; j++) {
+                for (int i = 0; i < 10; i++) {
+                    new_try(tries,insertion);
+                    auto start = std::chrono::steady_clock::now();
+                    std::sort(insertion.begin(), insertion.end());
+                    auto end = std::chrono::steady_clock::now();
+                    time_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
+                    assert(std::is_sorted(insertion.begin(),insertion.end()));
+                    //std::cout<<"Size of the vector: "<<insertion.size()<<"\n";
+                }
+                avrage_avikelse= standardavvikelse(time_vec);
+                avrage_time= avg(time_vec);
+                file<<"e"<<"\t"<<insertion.size()<<"\t"<<avrage_time<<"\t"<<avrage_avikelse<<"\t"<<samples<<"\n";
                 time_vec.clear();
                 //time_vec.resize(size);
                 tries=tries + size;
@@ -181,15 +138,6 @@ int main() {
     }
     file.close();
 
-/*
-for(int j=0;j<samples;j++) {
-    for (int i = 0; i < size; i++) {
-        auto start = std::chrono::steady_clock::now();
-        quickSort_m3(insertion, insertion.begin(), insertion.end());
-        auto end = std::chrono::steady_clock::now();
-        time_avg_vec.push_back(std::chrono::duration<double, std::milli>(end - start).count());
-    }
-}*/
     /*
     for(auto e:insertion){
         std::cout<<e<<", ";
@@ -218,5 +166,5 @@ for(int j=0;j<samples;j++) {
 void new_try(size_t sz, std::vector<int>&vec){
     vec.clear();
     vec.resize(sz);
-    generate_constant(vec);
+    generate_increasing(vec);
 }

@@ -27,5 +27,5 @@ double standardavvikelse(std::vector<double>&vec){
     }
     double lhs=(1.0/(N-1));
     //std::cout<<"avvikelse: "<<sqrt(lhs*time_diff)<<"\n";
-    return sqrt(lhs*time_diff);
+    return sqrt(lhs*time_diff)/sqrt(N);
 }
