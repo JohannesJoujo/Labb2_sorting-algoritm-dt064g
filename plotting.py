@@ -90,35 +90,35 @@ for line in lines:
         Stdev_std_sort.append(float(parts[3]))
 
 # Plot the data for Insertion Sort
-plt.errorbar(N_insertion_sort, T_insertion_sort, yerr=Stdev_insertion_sort, fmt='o', ecolor='red')
+plt.errorbar(N_insertion_sort, T_insertion_sort, yerr=Stdev_insertion_sort, fmt='o-', ecolor='red')
 plt.xlabel('N')
 plt.ylabel('Time [ms]')
-plt.title(Lable_insertion_sort)
+plt.title('Insertion Sort')
 
 # Plot the data for Selection Sort
 plt.figure()  # Create a new figure
-plt.errorbar(N_selection_sort, T_selection_sort, yerr=Stdev_selection_sort, fmt='o', ecolor='red')
+plt.errorbar(N_selection_sort, T_selection_sort, yerr=Stdev_selection_sort, fmt='o-', ecolor='red')
 plt.xlabel('N')
 plt.ylabel('Time [ms]')
 plt.title('Selection Sort')
 
 # Plot the data for QuickSort
 plt.figure()  # Create a new figure
-plt.errorbar(N_quickSort, T_quickSort, yerr=Stdev_quickSort, fmt='o', ecolor='red')
+plt.errorbar(N_quickSort, T_quickSort, yerr=Stdev_quickSort, fmt='o-', ecolor='red')
 plt.xlabel('N')
 plt.ylabel('Time [ms]')
 plt.title('QuickSort')
 
 # Plot the data for QuickSort with median-of-three partitioning
 plt.figure()  # Create a new figure
-plt.errorbar(N_quickSort_m3, T_quickSort_m3, yerr=Stdev_quickSort_m3, fmt='o', ecolor='red')
+plt.errorbar(N_quickSort_m3, T_quickSort_m3, yerr=Stdev_quickSort_m3, fmt='o-', ecolor='red')
 plt.xlabel('N')
 plt.ylabel('Time [ms]')
 plt.title('QuickSort with median-of-three partitioning')
 
 # Plot the data for QuickSort with median-of-three partitioning
 plt.figure()  # Create a new figure
-plt.errorbar(N_std_sort, T_std_sort, yerr=Stdev_std_sort, fmt='o', ecolor='red')
+plt.errorbar(N_std_sort, T_std_sort, yerr=Stdev_std_sort, fmt='o-', ecolor='red')
 plt.xlabel('N')
 plt.ylabel('Time [ms]')
 plt.title('std::sort')

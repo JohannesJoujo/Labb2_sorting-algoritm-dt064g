@@ -3,71 +3,7 @@
 //
 
 #include "Quicksort_m3.h"
-/*
-void quickSort_m3(std::vector<int>::iterator low, std::vector<int>::iterator high) {
-    if (low < high) {
-        auto pi = partition_m3(low, high);
-        quickSort_m3(low, pi-1);
-        quickSort_m3(pi + 1, high);
-    }
-}
 
-std::vector<int>::iterator partition_m3( std::vector<int>::iterator low, std::vector<int>::iterator high) {
-    auto pivot = med_of_3(low, high);
-    auto i = low - 1;
-    for (auto j = low; j < pivot; j++) {
-        if (*j < *pivot) {
-            i++;
-            std::swap(*i, *j);
-        }
-    }
-    std::swap(*(i + 1), *pivot);
-    return i + 1;
-}
-
-std::vector<int>::iterator med_of_3(std::vector<int>::iterator low, std::vector<int>::iterator high) {
-    auto mid=low+((high-low)/2);
-    if(*high < *low){
-        std::swap(*high,*low);
-    }
-    if(*mid < *low){
-        std::swap(*mid,*low);
-    }
-    if(*high > *mid){
-        std::swap(*high,*mid);
-    }
-    return high;
-}*/
-/*
-void quicksort_m3(std::vector<int>& A, std::vector<int>::iterator low, std::vector<int>::iterator high){
-    if (low < high){
-        auto p= partition_m3(A,low,high);
-        quicksort_m3(A,low,p);
-        quicksort_m3(A,p+1,high);
-    }
-}
-
-std::vector<int>::iterator partition_m3(std::vector<int>& A, std::vector<int>::iterator low, std::vector<int>::iterator high){
-    //auto pivot= low+((high-low)/2);
-    auto pivot= med_of_3(low,high);
-    auto i=low-1;
-    auto j=high+1;
-
-    while(1){
-        do{
-            i++;
-        } while (*i<*pivot);
-        do{
-            j--;
-        } while (*j>*pivot);
-
-        if(i>=j){
-            return j;
-        }
-        std::swap(*i,*j);
-    }
-}
-*/
 void quickSort_m3(std::vector<int>& A, int low, int high){
     if(low>=0 && high>=0 && low<high){
         auto p= partition_m3(A,low,high);
@@ -96,50 +32,6 @@ int partition_m3(std::vector<int>& A, int low, int high){
     }
 }
 
-/*
-std::vector<int>::iterator med_of_3(std::vector<int>::iterator low, std::vector<int>::iterator high){
-
-    auto temp_mid = (high - low) / 2;
-    auto mid = low + temp_mid;
-    if (*low > *mid) {
-        std::swap(*low, *mid);
-    }
-    if (*mid > *high) {
-        std::swap(*mid, *high);
-    }
-    if (*mid < *low) {
-        std::swap(*mid, *low);
-    }
-    return mid;
-
-    auto mid=low+((high-low)/2);
-    if(*high < *low){
-        std::swap(*high,*low);
-    }
-    if(*mid < *low){
-        std::swap(*mid,*low);
-    }
-    if(*high > *mid){
-        std::swap(*high,*mid);
-    }
-    return high;
-
-
-    auto temp_mid = (high - low) / 2;
-    auto mid = low + temp_mid;
-
-    if(*mid<*low){
-        std::swap(*mid,*low);
-    }
-    if(*high<*low){
-        std::swap(*high,*low);
-    }
-    if(*mid<*high){
-        std::swap(*mid,*high);
-    }
-    return high;
-}
-*/
 int med_of_3(std::vector<int>& A, int low, int high){
     auto mid=((high+low)/2);
 

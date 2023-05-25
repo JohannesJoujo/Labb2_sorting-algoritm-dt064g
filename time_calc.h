@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
+#include <cmath>
 
 double avg(std::vector<double>&vec){
     double sum=std::accumulate(vec.begin(), vec.end(),0.0);
